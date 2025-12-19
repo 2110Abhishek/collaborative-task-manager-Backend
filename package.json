@@ -4,12 +4,14 @@
   "description": "Collaborative Task Manager Backend",
   "main": "dist/server.js",
   "type": "commonjs",
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "test": "jest"
-  },
+ "scripts": {
+  "dev": "ts-node-dev src/server.ts",
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "prisma:generate": "npx prisma generate",
+  "prisma:migrate": "npx prisma migrate deploy",
+  "test": "jest"
+},
   "dependencies": {
     "@prisma/client": "^6.19.1",
     "bcrypt": "^6.0.0",
