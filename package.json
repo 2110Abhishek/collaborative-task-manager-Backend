@@ -4,14 +4,15 @@
   "description": "Collaborative Task Manager Backend",
   "main": "dist/server.js",
   "type": "commonjs",
-  "scripts": {
-    "dev": "ts-node-dev src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
-    "test": "jest"
-  },
+ "scripts": {
+  "dev": "ts-node-dev src/server.ts",
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "prisma:generate": "node node_modules/prisma/build/index.js generate",
+  "prisma:migrate": "node node_modules/prisma/build/index.js migrate deploy",
+
+  "test": "jest"
+},
   "dependencies": {
     "@prisma/client": "^6.19.1",
     "prisma": "^6.19.1",
