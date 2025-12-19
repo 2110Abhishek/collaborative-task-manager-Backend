@@ -15,25 +15,27 @@ model User {
   email     String   @unique
   password  String
   name      String
+  createdAt DateTime @default(now())
 
-  createdTasks  Task[] @relation("creator")
-  assignedTasks Task[] @relation("assignee")
+  createdTasks  Task[] @relation("UserCreatedTasks")
+  assignedTasks Task[] @relation("UserAssignedTasks")
 }
 
 model Task {
-  id            String   @id @default(uuid())
-  title         String
-  description   String
-  dueDate       DateTime
-  priority      Priority
-  status        Status
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  dueDate      DateTime
+  priority     Priority
+  status       Status   @default(TODO)
 
-  creatorId     String
-  assignedToId  String?
+  creatorId String
+  creator   User @relation("UserCreatedTasks", fields: [creatorId], references: [id])
 
-  creator   User @relation("creator", fields: [creatorId], references: [id])
-  assignee  User? @relation("assignee", fields: [assignedToId], references: [id])
+  assignedToId String?
+  assignee     User? @relation("UserAssignedTasks", fields: [assignedToId], references: [id])
 }
+
 
 enum Priority {
   LOW
