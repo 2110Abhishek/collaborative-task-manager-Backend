@@ -27,10 +27,12 @@ export const login = async (req: Request, res: Response) => {
   const data = LoginDto.parse(req.body);
   const { token, user } = await loginUser(data.email, data.password);
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    sameSite: "lax",
-  });
+ res.cookie("token", token, {
+  httpOnly: true,
+  sameSite: "none",
+  secure: true,
+});
+
 
   res.json({
   id: user.id,
