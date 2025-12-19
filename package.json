@@ -5,9 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server.js",
-    "migrate": "npx prisma migrate deploy",
-    "generate": "npx prisma generate"
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@prisma/client": "^6.19.1",
